@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Craft Community Hub</title>
+    <link rel="stylesheet" href="../static/seller.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1><i class="fas fa-store"></i> Craft Community Hub</h1>
+        <ul>
+            <li><a href="/seller-dashboard"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/manage-products"><i class="fas fa-box"></i> Manage Products</a></li>
+            <li><a href="/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="/earnings"><i class="fas fa-dollar-sign"></i> Earnings</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/support"><i class="fas fa-question-circle"></i> Support</a></li>
+            <li><a href="/logout"><i class="fas fa-logout"></i>Logout</a></li>
+            
+        </ul>
+    </nav>
+    <div class="content">
+        <h2 class="main-title">Support</h2>
+        <div class="support-container">
+            <div class="support-card">
+                <h3>Contact Us</h3>
+                <form id="support-form">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                    <button type="submit" class="support-btn">Submit</button>
+                </form>
+            </div>
+            <div class="faq-card">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <h4>How do I update my profile?</h4>
+                    <p>You can update your profile information by navigating to the 'Profile' page and editing your details.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I manage my products?</h4>
+                    <p>You can manage your products by navigating to the 'Manage Products' page where you can add, edit, or delete products.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I view my earnings?</h4>
+                    <p>Your earnings can be viewed on the 'Earnings' page, which provides a detailed summary of your sales and earnings.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I contact support?</h4>
+                    <p>You can contact support by filling out the form on this page or by emailing us at support@cchub.com.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/seller-dashboard.js"></script>
+</body>
+</html>

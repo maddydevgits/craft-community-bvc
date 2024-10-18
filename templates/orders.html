@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Craft Community Hub</title>
+    <link rel="stylesheet" href="../static/seller.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1><i class="fas fa-store"></i> Craft Community Hub</h1>
+        <ul>
+            <li><a href="/seller-dashboard"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/manage-products"><i class="fas fa-box"></i> Manage Products</a></li>
+            <li><a href="/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="/earnings"><i class="fas fa-dollar-sign"></i> Earnings</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/support"><i class="fas fa-question-circle"></i> Support</a></li>
+            <li><a href="/logout"><i class="fas fa-logout"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 class="main-title">Orders</h2>
+        <p>Here you can view and manage all your orders.</p>
+        <div class="order-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Product</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="order-table-body">
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order['_id'] }}</td>
+                        <td>{{ order['fullname'] }}</td>
+                        <td>
+                            <ul>
+                                {% for product in order['products'] %}
+                                <li>{{ product['productname'] }} - Qty: {{ product['quantity'] }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{ order['total_price'] }}</td>
+                        <td>{{ order['status'] }}</td>
+                        <td>
+                            <a href="/order-details/{{ order['_id'] }}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
+                            <form action="/update-order-status/{{ order['_id'] }}" method="post" style="display:inline;">
+                                <select name="status">
+                                    <option value="Pending" {% if order['status'] == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option value="Shipped" {% if order['status'] == 'Shipped' %}selected{% endif %}>Shipped</option>
+                                    <option value="Delivered" {% if order['status'] == 'Delivered' %}selected{% endif %}>Delivered</option>
+                                    <option value="Cancelled" {% if order['status'] == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                                </select>
+                                <button type="submit" class="btn btn-secondary"><i class="fas fa-save"></i> Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

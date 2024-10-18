@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders - Craft Community Hub</title>
+    <link rel="stylesheet" href="../static/orders.css">
+    <!-- <link rel="stylesheet" href="../static/order-confirmation.css">
+    <link rel="stylesheet" href="../static/cart.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1><i class="fas fa-store"></i> Craft Community Hub</h1>
+        <ul>
+            <li><a href="/customer-dashboard"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/products"><i class="fas fa-gift"></i> Products</a></li>
+            <li><a href="/ratings"><i class="fas fa-star"></i> Ratings</a></li>
+            <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="/cart" class="cart-icon"><i class="fas fa-shopping-cart"></i>Cart</a></li>
+            <li><a href="/my-orders">My Orders</a></li>
+            <li><a href="/logout" class="fas fa-logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 class="main-title">Your Orders</h2>
+
+        <div class="orders-container">
+            {% if orders %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Products</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order['_id'] }}</td>
+                        <td>
+                            <ol>
+                                {% for product in order['products'] %}
+                                <li>{{ product['productname'] }} - Qty: {{ product['quantity'] }}</li>
+                                {% endfor %}
+                            </ol>
+                        </td>
+                        <td>Rs. {{ order['total_price'] }}</td>
+                        <td>{{ order['status'] }}</td>
+                        <td>{{ order['created_at'] }}</td>
+                        <td>
+                            <a href="/order-confirmation/{{ order['_id'] }}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>You have not placed any orders yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="../static/orders.js"></script>
+</body>
+</html>

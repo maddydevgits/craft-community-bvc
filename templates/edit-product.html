@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product - Craft Community Hub</title>
+    <link rel="stylesheet" href="../static/seller.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1><i class="fas fa-store"></i> Craft Community Hub</h1>
+        <ul>
+            <li><a href="/seller-dashboard"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/manage-products"><i class="fas fa-box"></i> Manage Products</a></li>
+            <li><a href="/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="/earnings"><i class="fas fa-dollar-sign"></i> Earnings</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/support"><i class="fas fa-question-circle"></i> Support</a></li>
+            <li><a href="/logout"><i class="fas fa-logout"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 class="main-title">Edit Product</h2>
+        <p>Update the product information and save the changes.</p>
+
+        <div class="product-form">
+            <form id="edit-product-form" action="/editproduct/{{ product['_id'] }}" method="post">
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" name="product-name" value="{{ product['productname'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Category</label>
+                    <select id="product-category" name="product-category" required>
+                        <option value="pottery" {% if product['productcategory'] == 'pottery' %} selected {% endif %}>Pottery</option>
+                        <option value="coconut" {% if product['productcategory'] == 'coconut' %} selected {% endif %}>Coconut</option>
+                        <option value="bamboo" {% if product['productcategory'] == 'bamboo' %} selected {% endif %}>Bamboo</option>
+                        <option value="wooden" {% if product['productcategory'] == 'wooden' %} selected {% endif %}>Wooden</option>
+                        <option value="leaf" {% if product['productcategory'] == 'leaf' %} selected {% endif %}>Leaf</option>
+                        <option value="stone" {% if product['productcategory'] == 'stone' %} selected {% endif %}>Stone</option>
+                        <option value="herbal" {% if product['productcategory'] == 'herbal' %} selected {% endif %}>Herbal Products</option>
+                        <option value="handloom" {% if product['productcategory'] == 'handloom' %} selected {% endif %}>Handloom Sarees</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price</label>
+                    <input type="number" id="product-price" name="product-price" value="{{ product['productprice'] }}"  required>
+                </div>
+                <div class="form-group">
+                    <label for="product-stock">Stock</label>
+                    <input type="number" id="product-stock" name="product-stock" value="{{ product['productstock'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Product Image</label>
+                    <input type="text" id="imageurl" name="imageurl" value="{{ product['imageurl'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Product Description</label>
+                    <textarea name="product-description" cols="250" rows="20">{{product['productdescription']}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-color">Product Color</label>
+                    <input type="text" name="product-color" value="{{product['productcolor']}}" required >
+                </div>
+                <div class="form-group">
+                    <label for="product-rating">Product Rating</label>
+                    <input type="text" name="product-rating" value="{{product['productrating']}}"
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Optional: Include some JavaScript for form validation, etc. -->
+    <!-- <script src="../static/seller-dashboard.js"></script> -->
+
+</body>
+</html>

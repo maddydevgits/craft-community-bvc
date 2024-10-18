@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Craft Community Hub</title>
+    <link rel="stylesheet" href="../static/seller.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1><i class="fas fa-store"></i> Craft Community Hub</h1>
+        <ul>
+            <li><a href="/seller-dashboard"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/manage-products"><i class="fas fa-box"></i> Manage Products</a></li>
+            <li><a href="/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="/earnings"><i class="fas fa-dollar-sign"></i> Earnings</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/support"><i class="fas fa-question-circle"></i> Support</a></li>
+            <li><a href="/logout"><i class="fas fa-logout"></i>Logout</a></li>
+            
+        </ul>
+    </nav>
+    <div class="content">
+        <h2 class="main-title">Profile</h2>
+        <div class="profile-container">
+            <div class="profile-card">
+                
+                <h3>John Doe</h3>
+                <p><i class="fas fa-envelope"></i> johndoe@example.com</p>
+                <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Craft Street, Art City</p>
+            </div>
+            <div class="profile-edit">
+                <h3>Edit Profile</h3>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="John Doe">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="johndoe@example.com">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="phone" value="(123) 456-7890">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" value="123 Craft Street, Art City">
+                    <button type="submit" class="update-btn">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../static/seller-dashboard.js"></script>
+</body>
+</html>
